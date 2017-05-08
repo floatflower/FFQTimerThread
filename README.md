@@ -19,8 +19,8 @@ To link this library to your project, put this to qmake project file.
 ```
 LIBS += -lffqtimerthread
 ```
-By default, the library will be installed to /usr/include, To change "/usr" to another location, run:
-For example, change to /usr/local/include
+By default, the library will be installed to **/usr/include**.
+To change "/usr" to another location, for example, change to /usr/local/include, run:
 ```
 ~$ qmake -r PREFIX=/usr/local
 ```
@@ -30,7 +30,8 @@ Include the headers:
 ```cpp
 #include <ff/qtimerthread.h>
 ```
-There are two ways to use `QTimerThread`, first one is worker-object approach.
+There are two ways to use `QTimerThread`, first one is **worker-object approach**.
+
 These two approach are similar to [QThread usage approach](http://doc.qt.io/qt-5/qthread.html#details).
 ```cpp
 class Worker : public QObject
@@ -69,9 +70,10 @@ private:
 };
 ```
 Second one is to inhreit `QTimerThread` class and reimplement `QTimerThread::doRoutine()`.
+
 If you are going to use this approach,
 don't forget to connect signal `QTimerThread::timeout()` to slot `QTimerThread::doRoutine()`
-when subclassing `FFQTimerThread`
+when subclassing `FFQTimerThread`.
 ```cpp
 class WorkerThread : public FF::QTimerThread
 {
@@ -112,3 +114,5 @@ private:
 because `QTimerThread::wait()` will wait for the thread for QTimer quit.
 + Instantiating `QTimerThread` creates two thread pratically, one for timer,
 the other for doing job.
++ Use `QTimerThread::setInterval()` to set interval for the timer in `QTimerThread`,
+if you don't use this function, interval will be set to 0 msec, otherwise.
