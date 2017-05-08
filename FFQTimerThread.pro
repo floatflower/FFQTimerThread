@@ -22,16 +22,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 # You can also select to disable deprecated APIs only up to a certain version of Qt.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
-SOURCES += qtimerthread.cpp
+SOURCES += src/qtimerthread.cpp
 
-HEADERS += qtimerthread.h\
-        ffqtimerthread_global.h
+HEADERS += src/qtimerthread.h \
+           src/ffqtimerthread_global.h
 
 isEmpty(PREFIX):PREFIX = /usr
 isEmpty(LIBDIR):LIBDIR = $${PREFIX}/lib
 isEmpty(INCLUDEDIR):INCLUDEDIR = $${PREFIX}/include
 
-PUBLIC_HEADERS += qtimerthread.h ffqtimerthread_global.h
+PUBLIC_HEADERS += src/qtimerthread.h src/ffqtimerthread_global.h
+
+OBJECTS_DIR = ./build
+MOC_DIR = ./build
+DESTDIR =./lib
 
 unix {
     target.path = $$LIBDIR
