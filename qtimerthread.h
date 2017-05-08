@@ -21,6 +21,7 @@ signals:
     void timerStart();
 public slots:
     virtual void doRoutine();
+    void timerQuit();
 private:
     QTimer *m_timer;
     QThread *m_timerThread;

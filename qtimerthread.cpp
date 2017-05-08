@@ -16,6 +16,12 @@ FF::QTimerThread::~QTimerThread()
     delete this->m_timerThread;
 }
 
+void FF::QTimerThread::timerQuit()
+{
+    m_timer->stop();
+    m_timerThread->quit();
+}
+
 void FF::QTimerThread::setInterval(int msec)
 {
     m_timer->setInterval(msec);
