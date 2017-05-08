@@ -4,7 +4,7 @@ FF::QTimerThread::QTimerThread(QObject *parent)
     :QThread(parent)
 {
     this->m_timer = new QTimer;
-    this->m_timerThread = new QTimerThread;
+    this->m_timerThread = new QThread;
     m_timer->moveToThread(m_timerThread);
     connect(m_timer, SIGNAL(timeout()), this, SIGNAL(timeout()));
     connect(this, SIGNAL(timerStart()), m_timer, SLOT(start()));
@@ -26,4 +26,9 @@ void FF::QTimerThread::run()
     m_timerThread->start();
     emit timerStart();
     exec();
+}
+
+void FF::QTimerThread::doRoutine()
+{
+
 }

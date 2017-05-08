@@ -6,7 +6,7 @@
 
 QT       -= gui
 
-TARGET = FFQTimerThread
+TARGET = ffqtimerthread
 TEMPLATE = lib
 
 DEFINES += FFQTIMERTHREAD_LIBRARY
@@ -27,9 +27,17 @@ SOURCES += qtimerthread.cpp
 HEADERS += qtimerthread.h\
         ffqtimerthread_global.h
 
+isEmpty(PREFIX):PREFIX = /usr
+isEmpty(LIBDIR):LIBDIR = $${PREFIX}/lib
+isEmpty(INCLUDEDIR):INCLUDEDIR = $${PREFIX}/include
+
+PUBLIC_HEADERS += qtimerthread.h ffqtimerthread_global.h
+
 unix {
-    target.path = /usr/lib
-    INSTALLS += target
+    target.path = $$LIBDIR
+    headers.path = $${INCLUDEDIR}/ff
+    headers.files = $$PUBLIC_HEADERS
+    INSTALLS += target headers
 }
 
 DISTFILES += \

@@ -20,7 +20,7 @@ signals:
     void timeout();
     void timerStart();
 public slots:
-    virtual void doRoutine() = 0;
+    virtual void doRoutine();
 private:
     QTimer *m_timer;
     QThread *m_timerThread;
