@@ -17,7 +17,7 @@ Require Qt5
 ```
 To link this library to your project, put this to qmake project file.
 ```
-LIB += -lffqtimerthread
+LIBS += -lffqtimerthread
 ```
 By default, the library will be installed to /usr/include, To change "/usr" to another location, run:
 For example, change to /usr/local/include
